@@ -16,6 +16,16 @@
         </form>
     </div><!-- End Search Bar -->
 
+    <?php if (session()->has('diskon_aktif')): ?>
+      <div id="diskonAlert"
+           class="alert bg-success alert-dismissible fade show d-flex align-items-center justify-content-between shadow px-4 py-2 m-0"
+           role="alert"
+           style="font-size: 18px; min-width: 350px; max-width: 600px;">
+        <strong>Diskon Hari Ini:</strong>&nbsp; <span>Rp <?= number_format(session('diskon_aktif'), 0, ',', '.') ?></span>
+      </div>
+    <?php endif; ?>
+  </div>
+
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
 
