@@ -66,3 +66,74 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+
+# Aplikasi Toko - CodeIgniter 4
+
+Aplikasi Toko ini adalah sistem manajemen transaksi sederhana berbasis web yang dibangun menggunakan framework **CodeIgniter 4**. Aplikasi ini menyediakan fitur manajemen produk, keranjang belanja, checkout transaksi, serta integrasi API internal untuk pengambilan data transaksi.
+
+## 🛠️ Fitur
+
+Berikut adalah daftar fitur yang telah diterapkan dalam proyek ini:
+
+### 🔒 Otentikasi
+- Login dengan username dan password
+- Validasi role pengguna (Admin, Kasir, dll)
+
+### 📦 Manajemen Produk
+- CRUD kategori produk
+- CRUD produk
+- Penerapan diskon per produk menggunakan session
+
+### 🛒 Keranjang Belanja
+- Menambahkan produk ke dalam keranjang menggunakan library `Cart`
+- Diskon langsung diterapkan dari data session pada saat memasukkan produk
+- Update dan hapus item dari keranjang
+
+### 💰 Transaksi
+- Checkout transaksi
+- Penyimpanan detail transaksi ke dalam database
+- Perhitungan total harga, ongkos kirim, dan total bayar
+- Jumlah item dihitung dari data transaksi detail (`jumlah`)
+- Status transaksi: Selesai / Belum Selesai
+
+### 🔌 API Internal (RESTful)
+- Endpoint `GET /api` untuk mengambil semua data transaksi
+- Autentikasi menggunakan API Key dari header
+- Mengembalikan informasi lengkap termasuk username, alamat, total harga, ongkir, jumlah item, dan detail produk
+
+### 📊 Dashboard
+- Menampilkan daftar transaksi dari API
+- Tabel responsif dengan informasi total item, total bayar, status, dan tanggal transaksi
+
+---
+
+## ⚙️ Instalasi
+
+1. **Clone repositori**
+   ```bash
+   git clone https://github.com/nopalwaee/belajar_ci.git
+   cd belajar_ci
+ 
+
+ ├── app/
+│   ├── Controllers/
+│   │   ├── ApiController.php      # Endpoint REST API transaksi
+│   │   ├── ProductController.php  # CRUD produk & kategori
+│   │   └── CartController.php     # Keranjang belanja & checkout
+│   ├── Models/
+│   │   ├── ProductModel.php
+│   │   ├── CategoryModel.php
+│   │   ├── TransactionModel.php
+│   │   └── TransactionDetailModel.php
+│   ├── Views/
+│   │   ├── v_dashboard.php        # Dashboard transaksi (fetch API)
+│   │   ├── v_product.php
+│   │   ├── v_cart.php
+│   │   └── ...
+├── public/
+│   └── index.php
+├── writable/
+├── .env
+├── composer.json
+└── README.md
